@@ -1,31 +1,32 @@
-import { Fragment } from "react";
 import Button from "./Button";
 import { useDispatch, useSelector } from "react-redux";
+import { counterAction } from "../store";
 
 const Counter = () => {
 
+
     const dispatchFunc = useDispatch();
-    let counter = useSelector((state) => state.counter);
-    let isCounterShown = useSelector((state) => state.isCounterShown);
+    let counter = useSelector((state)=>state.count)
+    let isCounterShown = useSelector((state)=>state.isCounterVisible)
 
     const incrementHandler = () => {
-        dispatchFunc({ type: "CHANGE__COUNTER", step: 1 });
+        dispatchFunc(counterAction.increment());
     }
 
     const decrementHandler = () => {
-        dispatchFunc({ type: "CHANGE__COUNTER", step: -1 })
+        dispatchFunc(counterAction.decrement())
     }
 
     const plusTen = () => {
-        dispatchFunc({ type: "CHANGE__COUNTER", step: 10 })
+        dispatchFunc(counterAction.increace(10))
     }
 
     const restartHandler = () => {
-        dispatchFunc({ type: "RESTART__COUNTER", step: 0 })
+        dispatchFunc(counterAction.restart())
     }
 
     const toggleCounter = () => {
-        dispatchFunc({ type: "TOGGLE__COUNTER" })
+        dispatchFunc(counterAction.toggleCounter())
     }
 
     return (
