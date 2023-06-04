@@ -1,13 +1,14 @@
+import { counterAction } from "../store/counterSclice";
 import Button from "./Button";
 import { useDispatch, useSelector } from "react-redux";
-import { counterAction } from "../store";
+
 
 const Counter = () => {
 
 
     const dispatchFunc = useDispatch();
-    let counter = useSelector((state)=>state.count)
-    let isCounterShown = useSelector((state)=>state.isCounterVisible)
+    let counter = useSelector((state)=>state.counter.count)
+    let isCounterShown = useSelector((state)=>state.counter.isCounterVisible)
 
     const incrementHandler = () => {
         dispatchFunc(counterAction.increment());
